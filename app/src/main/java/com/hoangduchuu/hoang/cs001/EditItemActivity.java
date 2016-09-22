@@ -28,14 +28,16 @@ public class EditItemActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String sqlitePosition = getIntent().getStringExtra("sqlitePosition");
                 String resultString = edtIntent.getText().toString();
+
                 Intent i =  new Intent(EditItemActivity.this, MainActivity.class);
+                i.putExtra("sqlitePositionResult", sqlitePosition);
                 i.putExtra("new_name", resultString);
                 setResult(RESULT_OK, i );
                 finish();
             }
         });
     }
-
 
 }
