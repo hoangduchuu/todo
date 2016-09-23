@@ -13,6 +13,7 @@
         android:textSize="18sp" />
 
     <TextView
+
         android:layout_margin="10dp"
         android:text="TextView"
         android:layout_width="match_parent"
@@ -20,4 +21,14 @@
         android:id="@+id/textViewID"
         android:textSize="14sp"
         android:textColor="@color/colorPrimary" />
+
+    <TextView
+        android:layout_margin="10dp"
+
+        android:textColor="#f11811"
+        android:text="TextView"
+        android:textSize="14sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewDate" />
 </LinearLayout>

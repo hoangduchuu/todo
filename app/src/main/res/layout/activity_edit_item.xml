@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_edit_item"
     android:layout_width="match_parent"
@@ -32,4 +33,26 @@
         android:layout_marginLeft="17dp"
         android:layout_marginStart="17dp"
         android:id="@+id/buttonSave" />
+
+    <TextView
+        android:text="textViewĐueate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/buttonSave"
+        android:layout_toStartOf="@+id/buttonSave"
+        android:layout_marginRight="29dp"
+        android:layout_marginEnd="29dp"
+        android:id="@+id/textViewDueDate" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_my_calendar"
+        android:layout_alignBottom="@+id/buttonSave"
+        android:layout_toLeftOf="@+id/buttonSave"
+        android:layout_toStartOf="@+id/buttonSave"
+        android:id="@+id/imageButtonDueDate" />
+
+
 </RelativeLayout>

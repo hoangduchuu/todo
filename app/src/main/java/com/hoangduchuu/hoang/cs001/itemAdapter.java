@@ -32,8 +32,11 @@ public class itemAdapter extends ArrayAdapter<ItemList> {
 
             TextView txtItemName = (TextView) view.findViewById(R.id.textViewItemName);
             TextView txtID = (TextView) view.findViewById(R.id.textViewID);
-            txtID.setText(String.valueOf("sqlite id: " +p.getId()));
-            txtItemName.setText(p.getItName());
+            TextView txtDate = (TextView) view.findViewById(R.id.textViewDate) ;
+
+            txtID.setText(String.valueOf("sqliteID: " +p.getId()));
+            txtItemName.setText("Task: " + p.getItName());
+            txtDate.setText(""+p.getDueDate());
         }
         return view;
     }
