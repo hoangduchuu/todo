@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class MyDB extends SQLiteOpenHelper {
-    public MyDB(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public MyDB(MainActivity context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
     public void queryDB(String sql){

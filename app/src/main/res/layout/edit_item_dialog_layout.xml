@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_edit_item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.hoangduchuu.hoang.cs001.EditItemActivity">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Enter task name"
+        android:ems="10"
+        android:layout_marginTop="31dp"
+        android:id="@+id/editTextInten_DL"
+        android:layout_below="@+id/textViewDueDate_DL"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_my_calendar"
+        android:id="@+id/imageButtonDueDate_DL"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="textViewĐueate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewDueDate_DL"
+        android:textSize="18dp"
+        android:textColor="#eb0a2bd1"
+        android:layout_alignBottom="@+id/imageButtonDueDate_DL"
+        android:layout_toRightOf="@+id/imageButtonDueDate_DL"
+        android:layout_toEndOf="@+id/imageButtonDueDate_DL"
+        android:layout_marginLeft="75dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonSave_DL"
+        android:layout_marginTop="67dp"
+        android:layout_below="@+id/editTextInten_DL"
+        android:layout_alignRight="@+id/editTextInten_DL"
+        android:layout_alignEnd="@+id/editTextInten_DL" />
+
+    <Button
+        android:text="Canel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonCancel"
+        android:layout_alignTop="@+id/buttonSave_DL"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp" />
+
+
+</RelativeLayout>

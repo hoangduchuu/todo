@@ -1,6 +1,7 @@
 package com.hoangduchuu.hoang.cs001;
 
 import android.app.DatePickerDialog;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -19,25 +20,32 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Communicator{
     final MyDB myDB = new MyDB(this, "list_DB.sqlite", null, 1);
     ArrayList<String> todoItems;
     ListView lvItem;
     EditText edtTextItem;
-    Button btnAdd;
+    Button btnAdd ;
+    Integer clickItemDataPosition = -9;
+    EditItemDialog myEditItemDialog;
+
     ImageButton imgCalenda;
     TextView textViewCalenda;
     ArrayList<ItemList> arrayItemList;
+    FragmentManager fragmentManager = getFragmentManager();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         lvItem = (ListView)findViewById(R.id.listViewItems);
         btnAdd = (Button)findViewById(R.id.buttonAdd);
+
         imgCalenda = (ImageButton)findViewById(R.id.imageButtonCalenDa);
         textViewCalenda = (TextView)findViewById(R.id.textViewCalenda);
         final Calendar calendar = Calendar.getInstance();
         edtTextItem = (EditText)findViewById(R.id.editTextItemName);
+
 
 
         // Use SQLITE
@@ -50,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         get_And_ShowListView();
 
 
-        // DiaLog
+        // DiaLog Date
         final DatePickerDialog.OnDateSetListener onDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -82,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 myDB.queryDB("DELETE FROM Item2 where id ="+sqlitePosition+"");
                 arrayItemList = new ArrayList<ItemList>();
                 get_And_ShowListView();
-                Toast.makeText(MainActivity.this, "Deleted: " + sqlitePosition +"---"+ itemString, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Deleted: " + sqlitePosition +"---"+ itemString, Toast.LENGTH_SHORT).show();
                 return false;
 
             }
@@ -90,14 +98,32 @@ public class MainActivity extends AppCompatActivity {
         lvItem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                String dueDate = arrayItemList.get(position).getDueDate();
+//                String  sqlitePosition = String.valueOf(arrayItemList.get(position).getId());
+//                String itemName = arrayItemList.get(position).getItName();
+//                Intent i = new Intent(MainActivity.this, EditItemActivity.class);
+//                i.putExtra("sqlitePosition", sqlitePosition);
+//                i.putExtra("itemName",itemName);
+//                i.putExtra("dueDate",dueDate);
+//                startActivityForResult(i,0);
+                clickItemDataPosition = arrayItemList.get(position).getId();
+
+
+
+                myEditItemDialog = new EditItemDialog();
+
+                // put data activity to fragment
+                Bundle bundle = new Bundle();
+
                 String dueDate = arrayItemList.get(position).getDueDate();
-                String  sqlitePosition = String.valueOf(arrayItemList.get(position).getId());
-                String itemName = arrayItemList.get(position).getItName();
-                Intent i = new Intent(getApplicationContext(), EditItemActivity.class);
-                i.putExtra("sqlitePosition", sqlitePosition);
-                i.putExtra("itemName",itemName);
-                i.putExtra("dueDate",dueDate);
-                startActivityForResult(i,0);
+                String itName = arrayItemList.get(position).getItName();
+
+                bundle.putString("dueDate",dueDate);
+                bundle.putString("itemName", itName);
+                myEditItemDialog.setArguments(bundle);
+
+                myEditItemDialog.show(fragmentManager,"stringtagne");
+
             }
         });
 
@@ -112,22 +138,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-        // update item
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (resultCode){
-            case RESULT_OK:
-                String newName = data.getStringExtra("new_name");
-                String sqlitePosition = data.getStringExtra("sqlitePositionResult");
-                String new_dueDate = data.getStringExtra("dueDateResult");
-                myDB.queryDB("UPDATE Item2 SET itemName ='"+newName+"', dueDate = '"+new_dueDate+"' WHERE id = '"+sqlitePosition+"'");
-                Toast.makeText(MainActivity.this, "Data Changed", Toast.LENGTH_SHORT).show();
-                arrayItemList = new ArrayList<ItemList>();
-                get_And_ShowListView();
-                break;
-        }
-    }
+//        // update item by Activity
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        switch (resultCode){
+//            case RESULT_OK:
+//                String newName = data.getStringExtra("new_name");
+//                String sqlitePosition = data.getStringExtra("sqlitePositionResult");
+//                String new_dueDate = data.getStringExtra("dueDateResult");
+//                myDB.queryDB("UPDATE Item2 SET itemName ='"+newName+"', dueDate = '"+new_dueDate+"' WHERE id = '"+sqlitePosition+"'");
+//                Toast.makeText(MainActivity.this, "Data Changed", Toast.LENGTH_SHORT).show();
+//                arrayItemList = new ArrayList<ItemList>();
+//                get_And_ShowListView();
+//                break;
+//        }
+//    }
 
     //get and show listview function
     public void get_And_ShowListView(){
@@ -148,4 +174,17 @@ public class MainActivity extends AppCompatActivity {
         );
         lvItem.setAdapter(adapter);
     }
+
+
+    @Override
+    public void UpdateSql(String itemName, String dueDate) {
+        myDB.queryDB("UPDATE Item2 SET itemName ='"+itemName+"', dueDate = '"+dueDate+"' WHERE id = '"+clickItemDataPosition+"'");
+        Toast.makeText(getApplicationContext(), "updated change", Toast.LENGTH_SHORT).show();
+        arrayItemList = new ArrayList<ItemList>();
+        get_And_ShowListView();
+         myEditItemDialog.dismiss();
+
+    }
+
+
 }

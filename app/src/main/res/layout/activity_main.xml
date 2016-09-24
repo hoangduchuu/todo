@@ -27,8 +27,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="33dp"
-        android:layout_above="@+id/buttonAdd" />
+        android:layout_above="@+id/imageButtonCalenDa" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -48,20 +47,21 @@
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/ic_menu_my_calendar"
         android:id="@+id/imageButtonCalenDa"
-        android:layout_alignTop="@+id/editTextItemName"
-        android:layout_toLeftOf="@+id/buttonAdd"
-        android:layout_toStartOf="@+id/buttonAdd" />
+        android:layout_above="@+id/editTextItemName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:textColor="#d10808"
         android:textSize="20dp"
-        android:text=""
+        android:text=" Select date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textViewCalenda"
         android:layout_above="@+id/buttonAdd"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="13dp"
-        android:layout_marginStart="13dp" />
+        android:layout_alignRight="@+id/editTextItemName"
+        android:layout_alignEnd="@+id/editTextItemName"
+        android:layout_marginRight="31dp"
+        android:layout_marginEnd="31dp" />
+
 </RelativeLayout>
