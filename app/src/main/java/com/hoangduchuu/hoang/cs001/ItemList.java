@@ -8,6 +8,15 @@ public class ItemList {
     private int id;
     private String itName;
     private String dueDate;
+    private int priority;
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
 
     public ItemList() {
     }
@@ -36,10 +45,10 @@ public class ItemList {
         this.dueDate = dueDate;
     }
 
-    public ItemList(int id, String itName, String dueDate) {
-
+    public ItemList(int id, String itName, String dueDate, int priority) {
         this.id = id;
         this.itName = itName;
         this.dueDate = dueDate;
+        this.priority = priority;
     }
 }

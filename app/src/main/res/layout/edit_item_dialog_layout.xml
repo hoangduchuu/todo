@@ -67,5 +67,32 @@
         android:layout_marginLeft="32dp"
         android:layout_marginStart="32dp" />
 
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/editTextInten_DL"
+        android:layout_toRightOf="@+id/buttonCancel"
+        android:layout_alignRight="@+id/textViewDueDate_DL"
+        android:layout_alignEnd="@+id/textViewDueDate_DL"
+        android:layout_marginRight="23dp"
+        android:layout_marginEnd="23dp"
+        android:layout_above="@+id/buttonCancel"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:textSize="26dp"
+        android:textColor="#e10f0f"
+        android:text="Priority: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/spinner"
+        android:id="@+id/textView"
+        android:layout_toLeftOf="@+id/spinner"
+        android:layout_toStartOf="@+id/spinner"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp" />
+
 
 </RelativeLayout>

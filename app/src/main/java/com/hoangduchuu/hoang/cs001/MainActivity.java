@@ -9,18 +9,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity implements Communicator{
+public class MainActivity extends AppCompatActivity implements Communicator, AdapterView.OnItemSelectedListener{
     final MyDB myDB = new MyDB(this, "list_DB.sqlite", null, 1);
     ArrayList<String> todoItems;
     ListView lvItem;
@@ -28,11 +30,14 @@ public class MainActivity extends AppCompatActivity implements Communicator{
     Button btnAdd ;
     Integer clickItemDataPosition = -9;
     EditItemDialog myEditItemDialog;
+    Spinner spinner;
+    int prioritiPosition = -11;
 
     ImageButton imgCalenda;
     TextView textViewCalenda;
     ArrayList<ItemList> arrayItemList;
     FragmentManager fragmentManager = getFragmentManager();
+    String myLevel = "zzz";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +50,32 @@ public class MainActivity extends AppCompatActivity implements Communicator{
         textViewCalenda = (TextView)findViewById(R.id.textViewCalenda);
         final Calendar calendar = Calendar.getInstance();
         edtTextItem = (EditText)findViewById(R.id.editTextItemName);
+         spinner = (Spinner)findViewById(R.id.spinner2);
+
+        // spinner
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(getApplicationContext(),R.array.priority,android.R.layout.simple_spinner_item);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String priority = spinner.getSelectedItem().toString();
+                prioritiPosition = position;
+                myLevel = priority;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
 
         // Use SQLITE
-        myDB.queryDB("CREATE TABLE IF NOT EXISTS Item2(id INTEGER PRIMARY KEY AUTOINCREMENT, itemName  VARCHAR, dueDate VARCHAR)");
-//        myDB.queryDB("INSERT INTO Item2 VALUES(null, 'hoangduchuu' '01011993')");
+        myDB.queryDB("CREATE TABLE IF NOT EXISTS Item3(id INTEGER PRIMARY KEY AUTOINCREMENT, itemName  VARCHAR, dueDate VARCHAR, priority VARCHAR)");
+//        myDB.queryDB("INSERT INTO Item2 VALUES(null, 'hoangduchuu' '01011993', '1')");
 
 
         //show listview
@@ -73,8 +98,9 @@ public class MainActivity extends AppCompatActivity implements Communicator{
             public void onClick(View v) {
                 String dueDate = textViewCalenda.getText().toString();
                 String itemNameAdd = edtTextItem.getText().toString();
-                myDB.queryDB("INSERT INTO Item2 VALUES(null, '"+ itemNameAdd+"','"+dueDate+"')");
+                myDB.queryDB("INSERT INTO Item3 VALUES(null, '"+ itemNameAdd+"','"+dueDate+"', '"+ prioritiPosition +"')");
                 // refresh ListView
+                Toast.makeText(MainActivity.this, "" + prioritiPosition, Toast.LENGTH_SHORT).show();
                 arrayItemList = new ArrayList<ItemList>();
                 get_And_ShowListView();
                 edtTextItem.setText("");
@@ -87,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements Communicator{
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 String itemString = arrayItemList.get(position).getItName();
                 int sqlitePosition = arrayItemList.get(position).getId();
-                myDB.queryDB("DELETE FROM Item2 where id ="+sqlitePosition+"");
+                myDB.queryDB("DELETE FROM Item3 where id ="+sqlitePosition+"");
                 arrayItemList = new ArrayList<ItemList>();
                 get_And_ShowListView();
                     Toast.makeText(MainActivity.this, "Deleted: " + sqlitePosition +"---"+ itemString, Toast.LENGTH_SHORT).show();
@@ -118,8 +144,10 @@ public class MainActivity extends AppCompatActivity implements Communicator{
                 String dueDate = arrayItemList.get(position).getDueDate();
                 String itName = arrayItemList.get(position).getItName();
 
+
                 bundle.putString("dueDate",dueDate);
                 bundle.putString("itemName", itName);
+                bundle.putString("prioritiPosition",String.valueOf(prioritiPosition));
                 myEditItemDialog.setArguments(bundle);
 
                 myEditItemDialog.show(fragmentManager,"stringtagne");
@@ -158,12 +186,13 @@ public class MainActivity extends AppCompatActivity implements Communicator{
     //get and show listview function
     public void get_And_ShowListView(){
         textViewCalenda.setText("");
-        Cursor cursorOfItem = myDB.getDB("SELECT * FROM Item2");
+        Cursor cursorOfItem = myDB.getDB("SELECT * FROM Item3");
         while (cursorOfItem.moveToNext()){
             arrayItemList.add(new ItemList(
                     cursorOfItem.getInt(0),
                     cursorOfItem.getString(1),
-                    cursorOfItem.getString(2)
+                    cursorOfItem.getString(2),
+                    cursorOfItem.getInt(3)
 
             ));
         }
@@ -177,14 +206,23 @@ public class MainActivity extends AppCompatActivity implements Communicator{
 
 
     @Override
-    public void UpdateSql(String itemName, String dueDate) {
-        myDB.queryDB("UPDATE Item2 SET itemName ='"+itemName+"', dueDate = '"+dueDate+"' WHERE id = '"+clickItemDataPosition+"'");
+    public void UpdateSql2(String itemName, String dueDate, int priority) {
+        myDB.queryDB("UPDATE Item3 SET itemName ='"+itemName+"', dueDate = '"+dueDate+"', priority='"+priority+"'  WHERE id = '"+clickItemDataPosition+"'");
         Toast.makeText(getApplicationContext(), "updated change", Toast.LENGTH_SHORT).show();
         arrayItemList = new ArrayList<ItemList>();
         get_And_ShowListView();
-         myEditItemDialog.dismiss();
+        myEditItemDialog.dismiss();
 
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }

@@ -33,10 +33,20 @@ public class itemAdapter extends ArrayAdapter<ItemList> {
             TextView txtItemName = (TextView) view.findViewById(R.id.textViewItemName);
             TextView txtID = (TextView) view.findViewById(R.id.textViewID);
             TextView txtDate = (TextView) view.findViewById(R.id.textViewDate) ;
+            TextView txtPrio  = (TextView)view.findViewById(R.id.textViewPriority_DL);
 
             txtID.setText(String.valueOf("sqliteID: " +p.getId()));
             txtItemName.setText("Task: " + p.getItName());
             txtDate.setText(""+p.getDueDate());
+
+            String priorityView = "abc";
+            switch (p.getPriority()){
+                case 0 : priorityView = "Hight"; break;
+                case 1 : priorityView = "Low"; break;
+                case 2 : priorityView = "Medium"; break;
+            }
+
+            txtPrio.setText(priorityView);
         }
         return view;
     }

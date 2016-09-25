@@ -27,7 +27,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_above="@+id/imageButtonCalenDa" />
+        android:layout_above="@+id/imageButtonCalenDa"
+        android:layout_marginBottom="27dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -42,14 +43,29 @@
         android:layout_marginRight="65dp"
         android:layout_marginEnd="65dp" />
 
+    <Spinner
+         android:popupBackground="#0a61c4"
+        android:background="#c40a0a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/listViewItems"
+        android:layout_alignBottom="@+id/textViewCalenda">
+
+    </Spinner>
+
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/ic_menu_my_calendar"
         android:id="@+id/imageButtonCalenDa"
         android:layout_above="@+id/editTextItemName"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_toRightOf="@+id/spinner2"
+        android:layout_toEndOf="@+id/spinner2"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp" />
 
     <TextView
         android:textColor="#d10808"
@@ -59,9 +75,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/textViewCalenda"
         android:layout_above="@+id/buttonAdd"
-        android:layout_alignRight="@+id/editTextItemName"
-        android:layout_alignEnd="@+id/editTextItemName"
-        android:layout_marginRight="31dp"
-        android:layout_marginEnd="31dp" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
