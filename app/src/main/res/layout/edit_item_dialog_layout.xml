@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/textViewDueDate_DL"
         android:textSize="18dp"
-        android:textColor="#eb0a2bd1"
+        android:textColor="#e67e22"
         android:layout_alignBottom="@+id/imageButtonDueDate_DL"
         android:layout_toRightOf="@+id/imageButtonDueDate_DL"
         android:layout_toEndOf="@+id/imageButtonDueDate_DL"

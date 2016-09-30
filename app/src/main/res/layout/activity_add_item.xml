@@ -5,7 +5,7 @@
     android:id="@+id/activity_add_item"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hoangduchuu.hoang.cs001.AddItem"
+        tools:context="com.hoangduchuu.hoang.cs001.AddItem"
     android:background="#ecf0f1"
     >
     <android.support.v7.widget.Toolbar
@@ -20,7 +20,6 @@
     </android.support.v7.widget.Toolbar>
 
     <TextView
-        android:textSize="20dp"
         android:text="DueDate"
         android:textColor="#e67e22"
         android:layout_width="wrap_content"
@@ -31,7 +30,16 @@
         android:id="@+id/textView3" />
 
     <TextView
-        android:textSize="20dp"
+        android:textColor="#e67e22"
+        android:text="Priority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView4"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_marginTop="113dp"
+        android:id="@+id/textView6" />
+
+    <TextView
         android:textColor="#e67e22"
         android:text="Status"
         android:layout_width="wrap_content"
@@ -53,9 +61,8 @@
         android:layout_marginLeft="54dp"
         android:layout_marginStart="54dp"
         android:id="@+id/editTextName"
-        android:textColorHint="@color/xanh_huu"
-        android:textColorLink="@color/xanh_huu"
-        android:textColor="@color/xanh_huu" />
+        android:textColor="@color/xanh_huu"
+        android:textColorHint="@color/xanh_huu" />
 
     <Spinner
         android:popupBackground="#d1a6e1df"
@@ -82,9 +89,8 @@
         android:layout_alignStart="@+id/spinnerPriority" />
 
     <TextView
-        android:textSize="20dp"
-
         android:text="Task Name"
+        android:textColor="#e67e22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
@@ -93,8 +99,7 @@
         android:id="@+id/textView2"
         android:layout_below="@+id/toolbarEditItem"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textColor="#e67e22" />
+        android:layout_alignParentStart="true" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -106,7 +111,6 @@
         android:id="@+id/imageButtonA" />
 
     <TextView
-        android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageButtonA"
@@ -119,8 +123,8 @@
         android:layout_marginLeft="26dp"
         android:layout_marginStart="26dp"
         android:layout_toRightOf="@+id/imageButtonA"
-        android:textColorHint="@color/xanh_huu"
-        android:textColor="@color/xanh_huu" />
+        android:textColor="@color/xanh_huu"
+        android:textColorHint="@color/xanh_huu" />
 
     <EditText
         android:hint="Note"
@@ -130,34 +134,21 @@
         android:ems="10"
         android:id="@+id/editTextNotes"
         android:layout_alignBottom="@+id/textView4"
-        android:layout_alignLeft="@+id/editTextName"
-        android:layout_alignStart="@+id/editTextName"
+        android:layout_toRightOf="@+id/imageButtonA"
+        android:layout_toEndOf="@+id/imageButtonA"
         android:textColor="@color/xanh_huu"
         android:textColorHint="@color/xanh_huu" />
 
     <TextView
-        android:textSize="20dp"
         android:text="Task note "
         android:textColor="#e67e22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="82dp"
+        android:layout_marginTop="73dp"
         android:id="@+id/textView4"
         android:layout_below="@+id/textView3"
         android:layout_alignLeft="@+id/textView3"
         android:layout_alignStart="@+id/textView3" />
-
-    <TextView
-        android:textSize="20dp"
-        android:textColor="#e67e22"
-        android:text="Priority"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="85dp"
-        android:id="@+id/textView6"
-        android:layout_below="@+id/textView4"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_alignStart="@+id/textView4" />
 
 
 </RelativeLayout>

@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Todo</string>
+    <string name="add">ADD</string>
+    <string name="add_item">add new items</string>
+    <string-array name="priority">
+        <item>Hight</item>
+        <item>Low</item>
+        <item>Medium</item>
+
+
+    </string-array>
+    <string-array name="status">
+        <item>Done</item>
+        <item>Todo</item>
+    </string-array>
+</resources>

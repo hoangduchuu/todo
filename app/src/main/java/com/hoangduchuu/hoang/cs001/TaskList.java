@@ -1,29 +1,24 @@
 package com.hoangduchuu.hoang.cs001;
 
 /**
- * Created by hoang on 9/22/16.
+ * Created by hoang on 9/28/16.
  */
 
-public class ItemList {
-
+public class TaskList{
     private int id;
-    private String itName;
+    private String taskName;
     private String taskNote;
     private String dueDate;
     private int priority;
     private int status;
 
-    public ItemList(int id, String itName, String taskNote, String dueDate, int priority, int status) {
+    public TaskList(int id, String taskName, String taskNote, String dueDate, int priority, int status) {
         this.id = id;
-        this.itName = itName;
-        this.taskNote = taskNote;
+        this.taskName = taskName;
         this.dueDate = dueDate;
+        this.taskNote = taskNote;
         this.priority = priority;
         this.status = status;
-    }
-
-    public ItemList(int anInt, String string, String string1, int anInt1, int anInt2) {
-
     }
 
     public int getId() {
@@ -34,12 +29,12 @@ public class ItemList {
         this.id = id;
     }
 
-    public String getItName() {
-        return itName;
+    public String getTaskName() {
+        return taskName;
     }
 
-    public void setItName(String itName) {
-        this.itName = itName;
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
     }
 
     public String getTaskNote() {

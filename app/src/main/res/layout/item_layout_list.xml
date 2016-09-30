@@ -26,8 +26,9 @@
         <TextView
             android:id="@+id/textViewPriority_DL"
             android:textSize="22dp"
-            android:textColor="#2e02f1"
+            android:textColor="#e67e22"
             android:text="Priority"
+            android:layout_marginTop="29dp"
            android:layout_marginRight="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,16 +41,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-            android:text="TextView"
-            android:layout_width="132dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewID"/>
+        <!--<TextView-->
+            <!--android:textColor="#0a3aea"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:text="TextView"-->
+            <!--android:layout_width="132dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/textViewID"/>-->
 
 
         <TextView
+            android:textColor="#0a3aea"
+            android:layout_marginLeft="10dp"
             android:text="what the hell here you a"
-            android:layout_width="match_parent"
+            android:layout_width="368dp"
             android:layout_height="wrap_content"
             android:id="@+id/textViewDate"
             />

@@ -1,0 +1,17 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="CustomAppBarByHuu" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorPrimary">#e67e22</item>
+        <item name="android:colorPrimaryDark">#C2185B</item>
+        <item name="android:textColorPrimary">#f7f7f7</item>
+        <item name="android:textColorSecondary">#c0e7ec</item>
+
+        <item name="android:navigationBarColor">#e67e22</item>
+    </style>
+
+    <style name="customBackgroundPOPUP" parent="CustomAppBarByHuu">
+        <item name="android:background">#e67e22</item>
+    </style>
+    
+</resources>

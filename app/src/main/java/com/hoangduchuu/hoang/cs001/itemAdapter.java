@@ -7,15 +7,17 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.util.List;
+import java.util.ArrayList;
+
+import static com.hoangduchuu.hoang.cs001.R.id.textViewPriority_DL;
 
 /**
  * Created by hoang on 9/22/16.
  */
 
-public class itemAdapter extends ArrayAdapter<ItemList> {
+public class itemAdapter extends ArrayAdapter<TaskList> {
 
-    public itemAdapter(Context context, int resource, List<ItemList> items) {
+    public itemAdapter(Context context, int resource, ArrayList<TaskList> items) {
         super(context, resource, items);
     }
 
@@ -27,16 +29,16 @@ public class itemAdapter extends ArrayAdapter<ItemList> {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             view =  inflater.inflate(R.layout.item_layout_list, null);
         }
-        ItemList p = getItem(position);
+        TaskList p = getItem(position);
         if (p != null) {
 
             TextView txtItemName = (TextView) view.findViewById(R.id.textViewItemName);
-            TextView txtID = (TextView) view.findViewById(R.id.textViewID);
+//            TextView txtID = (TextView) view.findViewById(R.id.textViewID);
             TextView txtDate = (TextView) view.findViewById(R.id.textViewDate) ;
-            TextView txtPrio  = (TextView)view.findViewById(R.id.textViewPriority_DL);
+            TextView txtPriority = (TextView)view.findViewById(textViewPriority_DL);
 
-            txtID.setText(String.valueOf("sqliteID: " +p.getId()));
-            txtItemName.setText("Task: " + p.getItName());
+//            txtID.setText(String.valueOf("sqliteID: " +p.getId()));
+            txtItemName.setText("" + p.getTaskName());
             txtDate.setText(""+p.getDueDate());
 
             String priorityView = "abc";
@@ -45,8 +47,8 @@ public class itemAdapter extends ArrayAdapter<ItemList> {
                 case 1 : priorityView = "Low"; break;
                 case 2 : priorityView = "Medium"; break;
             }
+            txtPriority.setText(priorityView);
 
-            txtPrio.setText(priorityView);
         }
         return view;
     }
