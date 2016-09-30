@@ -131,7 +131,7 @@ public class AddItem extends AppCompatActivity {
                         "'"+spinnerStatusId+"')");
                 Intent i = new Intent(getApplicationContext(),MainActivity.class);
                 i.putExtra("callGetFresh","huuhoang");
-                startActivity(i);
+                startActivity(i)    ;
 
                 break;
         }
