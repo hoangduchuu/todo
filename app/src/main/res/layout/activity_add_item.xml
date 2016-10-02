@@ -5,7 +5,7 @@
     android:id="@+id/activity_add_item"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-        tools:context="com.hoangduchuu.hoang.cs001.AddItem"
+        tools:context="com.hoangduchuu.hoang.cs001.AddTaskActvity"
     android:background="#ecf0f1"
     >
     <android.support.v7.widget.Toolbar
@@ -65,14 +65,15 @@
         android:textColorHint="@color/xanh_huu" />
 
     <Spinner
+
         android:popupBackground="#d1a6e1df"
         android:popupTheme="@style/customBackgroundPOPUP"
         android:background="#d1a6e1df"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView6"
-        android:layout_alignLeft="@+id/editTextNotes"
-        android:layout_alignStart="@+id/editTextNotes"
+        android:layout_alignLeft="@+id/scrollViewNote"
+        android:layout_alignStart="@+id/scrollViewNote"
         android:layout_marginLeft="39dp"
         android:layout_marginStart="39dp"
         android:id="@+id/spinnerPriority" />
@@ -81,7 +82,7 @@
         android:popupBackground="#d1a6e1df"
         android:popupTheme="@style/customBackgroundPOPUP"
         android:background="#d1a6e1df"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView7"
         android:id="@+id/spinnerStatus"
@@ -125,6 +126,18 @@
         android:layout_toRightOf="@+id/imageButtonA"
         android:textColor="@color/xanh_huu"
         android:textColorHint="@color/xanh_huu" />
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scrollViewNote"
+    android:layout_alignBottom="@+id/textView4"
+    android:layout_toRightOf="@+id/imageButtonA"
+    android:layout_toEndOf="@+id/imageButtonA"
+    android:layout_below="@+id/imageButtonA"
+    android:layout_marginTop="21dp">
+<FrameLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <EditText
         android:hint="Note"
@@ -133,18 +146,18 @@
         android:inputType="textMultiLine"
         android:ems="10"
         android:id="@+id/editTextNotes"
-        android:layout_alignBottom="@+id/textView4"
-        android:layout_toRightOf="@+id/imageButtonA"
-        android:layout_toEndOf="@+id/imageButtonA"
         android:textColor="@color/xanh_huu"
         android:textColorHint="@color/xanh_huu" />
+</FrameLayout>
+
+</ScrollView>
 
     <TextView
         android:text="Task note "
         android:textColor="#e67e22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="73dp"
+        android:layout_marginTop="107dp"
         android:id="@+id/textView4"
         android:layout_below="@+id/textView3"
         android:layout_alignLeft="@+id/textView3"

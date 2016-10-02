@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_marginBottom="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        >
+        <TextView
+            android:text="ItemName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewItemName"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="22sp"
+            android:layout_weight="2.81"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toLeftOf="@+id/textViewPriority_DL"
+           />
+
+        <TextView
+            android:id="@+id/textViewPriority_DL"
+            android:textSize="22dp"
+            android:textColor="#e67e22"
+            android:text="Priority"
+            android:layout_marginTop="29dp"
+           android:layout_marginRight="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--<TextView-->
+            <!--android:textColor="#0a3aea"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:text="TextView"-->
+            <!--android:layout_width="132dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/textViewID"/>-->
+
+
+        <TextView
+            android:textColor="#0a3aea"
+            android:layout_marginLeft="10dp"
+            android:text="what the hell here you a"
+            android:layout_width="368dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewDate"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

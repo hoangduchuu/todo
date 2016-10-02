@@ -13,12 +13,12 @@ public class MyDB extends SQLiteOpenHelper {
         super(context, name, factory, version);
     }
 
-    public MyDB(AddItem context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public MyDB(AddTaskActvity context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
 
-    public MyDB(Detail context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public MyDB(DetailActivity context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 

@@ -27,6 +27,8 @@ The following **additional** features are implemented:
 
 * [x] Add / edit / delete Task item similar demo.  		
 * [x] Comfirm when delete Task item		
+* [x] Use ScrollView for Task Note if content too long. 
+
 
 ## Video Walkthrough .
 

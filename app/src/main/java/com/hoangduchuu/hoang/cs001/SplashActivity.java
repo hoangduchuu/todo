@@ -11,14 +11,14 @@ import android.view.WindowManager;
  * Created by hoang on 9/30/16.
  */
 
-public class splash extends Activity {
+public class SplashActivity extends Activity {
     private static final int SPLASH_SHOW_TIME = 789;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.splash_layout);
+        setContentView(R.layout.activity_splash);
         new BackgroundSplashTask().execute();
     }
 
@@ -41,7 +41,7 @@ public class splash extends Activity {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            Intent i = new Intent(splash.this, MainActivity.class);
+            Intent i = new Intent(SplashActivity.this, MainActivity.class);
             startActivity(i); finish();
         }
 

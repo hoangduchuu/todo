@@ -20,7 +20,7 @@ import java.util.Calendar;
 
 import static com.hoangduchuu.hoang.cs001.R.id.textViewDateDue;
 
-public class AddItem extends AppCompatActivity {
+public class AddTaskActvity extends AppCompatActivity {
     Toolbar editToolbar;
     Spinner spinnerPriority, spinnerStatus;
     ImageButton imageButton ;
@@ -97,7 +97,7 @@ public class AddItem extends AppCompatActivity {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(AddItem.this, onDateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.YEAR), calendar.get(Calendar.DAY_OF_MONTH)).show();
+                new DatePickerDialog(AddTaskActvity.this, onDateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.YEAR), calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });// end btn calendar
     }
@@ -125,8 +125,8 @@ public class AddItem extends AppCompatActivity {
                 myDB.queryDB("INSERT INTO aTask VALUES(" +
                         "null,  " +
                         "'"+edtTaskName.getText().toString()+"', " +
-                        "'"+edtNote.getText().toString()+"' , " +
                         "'"+txtvDueDate.getText().toString()+"' , " +
+                        "'"+edtNote.getText().toString()+"' , " +
                         "'"+spinnerPriorityId+"', " +
                         "'"+spinnerStatusId+"')");
                 Intent i = new Intent(getApplicationContext(),MainActivity.class);

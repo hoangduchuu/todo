@@ -15,9 +15,9 @@ import static com.hoangduchuu.hoang.cs001.R.id.textViewPriority_DL;
  * Created by hoang on 9/22/16.
  */
 
-public class itemAdapter extends ArrayAdapter<TaskList> {
+public class TaskAdapter extends ArrayAdapter<TaskList> {
 
-    public itemAdapter(Context context, int resource, ArrayList<TaskList> items) {
+    public TaskAdapter(Context context, int resource, ArrayList<TaskList> items) {
         super(context, resource, items);
     }
 
@@ -38,8 +38,8 @@ public class itemAdapter extends ArrayAdapter<TaskList> {
             TextView txtPriority = (TextView)view.findViewById(textViewPriority_DL);
 
 //            txtID.setText(String.valueOf("sqliteID: " +p.getId()));
-            txtItemName.setText("" + p.getTaskName());
-            txtDate.setText(""+p.getDueDate());
+            txtItemName.setText(p.getTaskName());
+            txtDate.setText(p.getDueDate());
 
             String priorityView = "abc";
             switch (p.getPriority()){

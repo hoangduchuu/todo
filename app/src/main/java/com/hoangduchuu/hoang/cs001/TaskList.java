@@ -7,12 +7,12 @@ package com.hoangduchuu.hoang.cs001;
 public class TaskList{
     private int id;
     private String taskName;
-    private String taskNote;
     private String dueDate;
+    private String taskNote;
     private int priority;
     private int status;
 
-    public TaskList(int id, String taskName, String taskNote, String dueDate, int priority, int status) {
+    public TaskList(int id, String taskName, String dueDate, String taskNote, int priority, int status) {
         this.id = id;
         this.taskName = taskName;
         this.dueDate = dueDate;

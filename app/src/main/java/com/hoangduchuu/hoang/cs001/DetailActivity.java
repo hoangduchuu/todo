@@ -10,7 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class Detail extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity {
     final MyDB myDB = new MyDB(this, "list_DB.sqlite", null, 1);
     int idtoDel;
     TextView txtvTask, txtvNote, txtvDate, txtvStatus, txtvPriority;
@@ -112,7 +112,7 @@ public class Detail extends AppCompatActivity {
                                 myDB.queryDB("DELETE FROM aTask where id = '"+idtoDel+"' ");
                                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(i);
-                                Detail.this.finish();
+                                DetailActivity.this.finish();
                             }
                         }
                 );
