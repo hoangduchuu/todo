@@ -55,7 +55,6 @@ public class EditItemActivity extends AppCompatActivity {
         int priorityID = i.getIntExtra("priorityID", 11);
         int statusID = i.getIntExtra("statusID", 11);
         sqlId = i.getIntExtra("id" , 32131);
-        Toast.makeText(getApplicationContext(), "" + priorityID, Toast.LENGTH_SHORT).show();
 
         edtTask.setText(i.getStringExtra("task").toString());
         edtNote.setText(i.getStringExtra("note").toString());
@@ -128,14 +127,8 @@ public class EditItemActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id){
             case R.id.itSave:
-
-                String taskName = edtTask.getText().toString();
-                String taskNnote = edtNote.getText().toString();
-                String dueDate = txtViewDueDate.getText().toString();
-                Toast.makeText(getApplicationContext(), "" + item.getTitle() , Toast.LENGTH_SHORT).show();
-                myDB.queryDB("UPDATE aTask SET taskName ='"+taskName+"', dueDate = '"+dueDate+"', taskNote = '"+taskNnote+"', priority ='"+selectedPriority+"' , status ='"+selectedStatus+"' WHERE id = '"+sqlId+"'");
-                Intent i = new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(i);
+                if (edtTask.getText().toString().isEmpty()) msnToast("Task Name is empty, enter Task Name before submit");
+                else save();
                 break;
             case R.id.itDelete:
                 AlertDialog.Builder myBuilder = new AlertDialog.Builder(this);
@@ -174,5 +167,17 @@ public class EditItemActivity extends AppCompatActivity {
     } // end menu method
 
 
+    public void msnToast(String string){
+        Toast.makeText(getApplicationContext(), "" + string, Toast.LENGTH_SHORT).show();
+    }
+    public void save(){
+
+        String taskName = edtTask.getText().toString();
+        String taskNnote = edtNote.getText().toString();
+        String dueDate = txtViewDueDate.getText().toString();
+        myDB.queryDB("UPDATE aTask SET taskName ='"+taskName+"', dueDate = '"+dueDate+"', taskNote = '"+taskNnote+"', priority ='"+selectedPriority+"' , status ='"+selectedStatus+"' WHERE id = '"+sqlId+"'");
+        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(i);
+    }
 
 }

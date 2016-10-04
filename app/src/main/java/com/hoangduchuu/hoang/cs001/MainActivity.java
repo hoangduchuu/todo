@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements Communicator, Ada
                 return false;
             }
         }); // end longClick
-        
+
     } // end onCreate
 
     public void createDB() {

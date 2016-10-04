@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -85,6 +86,7 @@ public class AddTaskActvity extends AppCompatActivity {
             }
         });
         // DiaLog Date
+
         final DatePickerDialog.OnDateSetListener onDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -114,27 +116,38 @@ public class AddTaskActvity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id){
             case R.id.itAdd:
-                myDB.queryDB("CREATE TABLE IF NOT EXISTS aTask(" +
-                        "id         INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        "taskName   VARCHAR, " +
-                        "dueDate    VARCHAR, " +
-                        "taskNote   VARCHAR,  " +
-                        "priority   INTEGER, " +
-                        "status     INTEGER)");
-
-                myDB.queryDB("INSERT INTO aTask VALUES(" +
-                        "null,  " +
-                        "'"+edtTaskName.getText().toString()+"', " +
-                        "'"+txtvDueDate.getText().toString()+"' , " +
-                        "'"+edtNote.getText().toString()+"' , " +
-                        "'"+spinnerPriorityId+"', " +
-                        "'"+spinnerStatusId+"')");
-                Intent i = new Intent(getApplicationContext(),MainActivity.class);
-                i.putExtra("callGetFresh","huuhoang");
-                startActivity(i)    ;
+                if (edtTaskName.getText().toString().isEmpty()) msnToast("Task Name is empty, enter Task Name before submit");
+                else itAdd();
+                ;
 
                 break;
         }
         return super.onOptionsItemSelected(item);
     } // End spinner method
+
+    public void msnToast(String string){
+        Toast.makeText(getApplicationContext(), "" + string, Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void itAdd(){
+        myDB.queryDB("CREATE TABLE IF NOT EXISTS aTask(" +
+                "id         INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "taskName   VARCHAR, " +
+                "dueDate    VARCHAR, " +
+                "taskNote   VARCHAR,  " +
+                "priority   INTEGER, " +
+                "status     INTEGER)");
+
+        myDB.queryDB("INSERT INTO aTask VALUES(" +
+                "null,  " +
+                "'"+edtTaskName.getText().toString()+"', " +
+                "'"+txtvDueDate.getText().toString()+"' , " +
+                "'"+edtNote.getText().toString()+"' , " +
+                "'"+spinnerPriorityId+"', " +
+                "'"+spinnerStatusId+"')");
+        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+        i.putExtra("callGetFresh","huuhoang");
+        startActivity(i)    ;
+    }
 }
